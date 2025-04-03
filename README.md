@@ -1,9 +1,7 @@
 # skybox
 
-This repository aims to create skyboxes from the cubemaps and images procedurally generated from noise using python and panda3D.
-The noise images, cubemaps and cloud cover images were created using programs from [NoiseTexture](https://github.com/taKana671/NoiseTexture) and its submodule [texture_generator](https://github.com/taKana671/texture_generator).
-
-![Image](https://github.com/user-attachments/assets/f3e1044c-570f-417f-9a9b-b13f91b984bc)
+This repository aims to create skyboxes from the cubemaps and images procedurally generated from noise using python and panda3D.  
+The noise images, cubemaps and cloud cover images were created using programs from [NoiseTexture](https://github.com/taKana671/NoiseTexture) and its submodule [texture_generator](https://github.com/taKana671/texture_generator).  
 
 # Requirements
 * Panda3D 1.10.15
@@ -14,7 +12,9 @@ The noise images, cubemaps and cloud cover images were created using programs fr
 
 # Skybox Demo
 
-#### Clone this repository with submodule.
+![Image](https://github.com/user-attachments/assets/9b506349-66a4-4370-b1a1-ffa344319a78)
+<br>
+### Clone this repository with submodule.
 ```
 git clone --recursive https://github.com/taKana671/skybox.git
 ```
@@ -54,12 +54,23 @@ Skybox image files bcreated with texture_generator must be renamed in advance.
 </table>    
     
 ```
+# skybox using a cubemap
 >>>python skybox_demo_cubemap.py
+
+# skybox using a cubemap converted from sphere map
+>>>python skybox_demo_spheremap.py
 ```
 
 ### Skybox from display region
+
 ```
 >>>python skybox_demo_displayregion.py
+```
+
+### Sphere sky from sphere map
+
+```
+>>>python spheresky_demo_spheremap.py
 ```
 
 # Controls:
