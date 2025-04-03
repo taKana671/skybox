@@ -2,7 +2,7 @@ from skybox_base import SkyBoxDemo
 from scene import Scene
 
 
-class CubeMapSkyBox(SkyBoxDemo):
+class SphereSky(SkyBoxDemo):
 
     def __init__(self):
         super().__init__()
@@ -10,9 +10,9 @@ class CubeMapSkyBox(SkyBoxDemo):
     def setup_scene(self):
         self.scene = Scene()
         self.scene.reparent_to(self.render)
-        self.scene.make_cubemap_skybox('skybox')
+        self.scene.make_sphere_sky()
 
 
 if __name__ == '__main__':
-    app = CubeMapSkyBox()
+    app = SphereSky()
     app.run()

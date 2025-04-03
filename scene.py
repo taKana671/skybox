@@ -75,11 +75,11 @@ class Building(NodePath):
 
 class CubeMapSkyBox(NodePath):
 
-    def __init__(self):
+    def __init__(self, dir_name):
         super().__init__(PandaNode('skybox_root'))
-        self.make_skybox()
+        self.make_skybox(dir_name)
 
-    def make_skybox(self):
+    def make_skybox(self, dir_name):
         self.sphere = Sphere(radius=500).create()
         self.sphere.set_pos(0, 0, 0)
         self.sphere.reparent_to(self)
@@ -91,8 +91,23 @@ class CubeMapSkyBox(NodePath):
 
         self.sphere.set_light_off()
         self.sphere.set_material_off()
-        imgs = base.loader.load_cube_map('textures/skybox/img_#.png')
+        imgs = base.loader.load_cube_map(f'textures/{dir_name}/img_#.png')
         self.sphere.set_texture(imgs)
+
+
+class SphereSky(NodePath):
+
+    def __init__(self):
+        super().__init__(PandaNode('skybox_root'))
+        self.make_skybox()
+
+    def make_skybox(self):
+        self.sphere = Sphere(radius=500).create()
+        self.sphere.set_pos(0, 0, 0)
+        self.sphere.reparent_to(self)
+
+        tex = base.loader.load_texture('textures/skysphere.png')
+        self.set_texture(tex)
 
 
 class DisplayRegionSkyBox(NodePath):
@@ -143,12 +158,17 @@ class Scene(NodePath):
         # print(base.win.getActiveDisplayRegions())
         # (DisplayRegion(0 1 0 1)=pixels(0 800 0 600), DisplayRegion(0 1 0 1)=pixels(0 800 0 600), DisplayRegion(0 1 0 1)=pixels(0 800 0 600))
 
-    def make_cubemap_skybox(self):
-        self.skybox = CubeMapSkyBox()
+    def make_cubemap_skybox(self, dir_name):
+        self.skybox = CubeMapSkyBox(dir_name)
         self.skybox.reparent_to(self)
         self.skybox.set_pos(0, 0, 150)
 
     def make_display_region_skybox(self):
-        # Do not parent to base.render
+        # Do not be parented to base.render
         self.skybox = DisplayRegionSkyBox()
+        self.skybox.set_pos(0, 0, 150)
+
+    def make_sphere_sky(self):
+        self.skybox = SphereSky()
+        self.skybox.reparent_to(self)
         self.skybox.set_pos(0, 0, 150)
