@@ -6,7 +6,7 @@ from panda3d.core import Shader, TextureStage, TexGenAttrib
 from panda3d.core import GeoMipTerrain
 from panda3d.core import Camera
 
-from shapes.src import Sphere, Box
+from shapes import Sphere, Box
 
 
 class Terrain(NodePath):
